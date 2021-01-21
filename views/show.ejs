@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Details</h1>
+
+    Airline: <%= flight.airline %>
+    <br>
+    Airport: <%= flight.airport %>
+    <br>
+    Flight #: <%= flight.flightNo %>
+    <br>
+    <br>
+    Departs: <%= flight.departs %>
+    <br>
+    <br>
+
+    <h3>Tickets:</h3>
+    <ol>
+        <% ticket.forEach(function (tick) { %>
+            <li>Seat #: <%= tick.seat %> - $<%= tick.price %></li>
+        <% }) %>
+        </ol>
+
+<h3>Destinations:</h3>
+    <ol>
+        <% flight.destinations.forEach(function (dest) { %>
+            <li><%= dest.airport %> - <%= dest.arrival %></li>
+        <% }) %>
+        </ol>
+
+    <form action="/flights/<%= flight.id %>/addDestination" method="post">
+        <label for="destAirport">Airport</label>
+        <select name="destAirport">
+          <option value="AUS">AUS</option>
+          <option value="DFW">DFW</option>
+          <option value="DEN" selected="selected">DEN</option>
+          <option value="LAX">LAX</option>
+          <option value="SAN">SAN</option>
+        </select>
+<br>
+<br>
+        <label for="destArrival">Arrival</label>
+        <input type="datetime-local" name="destArrival">
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+
+    </form>
+<br>
+<br>
+
+<a href="/flights/<%= flight.id %>/tickets/new">New Ticket</a>
+<br>
+
+    <a href="../flights">Back to All Flights</a>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Flights</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <div class="topnav">
+      <a class="active" href="/flights">All Flights</a>
+      <a href="/flights/add">Add Flight</a>
+    </div>
+    <h1>All Flights</h1>
+    <p>Welcome to All Flights</p>
+
+    <% results.forEach(function(result) { %>
+
+    <div class="divTable" style="width: 100%; border: 1px solid #000">
+      <div class="divTableBody">
+        <div class="divTableRow">
+          <div class="divTableCell"><%= result.airline %></div>
+          <div class="divTableCell"><%= result.airport %></div>
+          <div class="divTableCell"><%= result.flightNo %></div>
+          <div class="divTableCell"><%= result.departs.toUTCString() %></div>
+          <div class="divTableCell"><a href="/flights/<%= result.id %>">Details</a></div>
+        </div>
+      </div>
+    </div>
+
+    <% }) %>
+    <br />
+  </body>
+</html>
