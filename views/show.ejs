@@ -20,10 +20,13 @@
     <br>
 
     <h3>Tickets:</h3>
+    <% if (ticket.length == 0) { %>
+        <%= 'There are no tickets' %>
+   <%  } else { %>
     <ol>
         <% ticket.forEach(function (tick) { %>
-            <li>Seat #: <%= tick.seat %> - $<%= tick.price %></li>
-        <% }) %>
+            <li>Seat #: <%= tick.seat %> - Price: $<%= tick.price %></li>
+        <% }) }%>
         </ol>
 
 <h3>Destinations:</h3>
